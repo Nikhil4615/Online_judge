@@ -1,6 +1,9 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Mid from "./components/Mid";
+// import Login from "./Login";
+
+import Signup from "./Signup";
 
 function App() {
   return (
@@ -8,6 +11,8 @@ function App() {
     <Header />
     <Mid />
     <Footer />
+    {/* <Login /> */}
+    {/* <Signup /> */}
    </div>
   );
 }
