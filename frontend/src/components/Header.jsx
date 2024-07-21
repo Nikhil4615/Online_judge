@@ -26,12 +26,6 @@ const Header = () => {
           <li>
             Contact us
           </li>
-          <li>
-            <button className='bg-white text-zinc-900 py-2 px-4 rounded text-[20px] font-semibold'>Sign up</button>
-          </li>
-          <li>
-            <button className='bg-white text-zinc-900 py-2 px-4 rounded text-[20px] font-semibold'>Login</button>
-          </li>
         </ul>
         {/* Responsive menu */}
         <ul className={`duration-300 w-full h-screen md:hidden block bg-neutral-800 fixed text-[20px] font-bold text-white ${toggle ? 'left-[0]' : 'left-[-100%]'} top-[83px]`}>

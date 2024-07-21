@@ -1,10 +1,11 @@
-import React ,{useState} from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [val, setVal] = useState('')
-
+    const [val, setVal] = useState({ username: '', password: '' });
+    const navigate = useNavigate();
     const HandleChange = (e) => {
-        setVal({ ...val, [e.target.id]: e.target.value });
+        setVal({ ...val, [e.target.id]: e.target.value.trim() });
     };
 
     const HandleSubmit = async (e) => {
@@ -16,11 +17,17 @@ const Login = () => {
                 body: JSON.stringify(val)
             });
             const data = await res.json();
-            console.log('login successful');
+            if (res.ok) {
+                console.log('login successful');
+                navigate('/');
+            } else {
+                console.error('Error:', data.message);
+            }
         } catch (error) {
             console.error('Error:', error);
         }
     };
+
     return (
         <div className='bg-zinc-900 p-4 h-screen flex flex-col'>
             <div className='text-white text-4xl font-bold self-start ml-3'>Online Judge</div>

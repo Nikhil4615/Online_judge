@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/userroute.js');
 const authRoutesSignup =require('./routes/authsignup.js');
 const authRoutesLogin =require('./routes/authlogin.js');
+const crudRoutesproblems =require('./routes/crudproblems.js');
 // Load environment variables
 const cors = require('cors');
 
@@ -30,18 +31,11 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use((err,req,res,next) =>{
-  const statuscode = err.statuscode || 500;
-  const message = err.message || "Internal Service Error.";
-  res.status(statuscode).json({
-    success:false,
-    statuscode,
-    message
-  })
-})
 app.use('/api/users', userRoutes);
 app.use('/api/auth',authRoutesSignup);
 app.use('/api/auth',authRoutesLogin);
+app.use('/api/problems',crudRoutesproblems);
+
 app.use((err,req,res,next) =>{
   const statuscode = err.statuscode || 500;
   const message = err.message || "Internal Service Error.";
